@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="RHt4NsGWobdyhzt1vJog8hTYucuNYO3cTjy0UZFC">
+    <title>SICENET Plus - Verificación de Constancias</title>
+    <link rel="shortcut icon" href="https://sistemacentros.org/store/image/logos/logoico.png">
+
+    <!-- Estilos externos -->
+    <link href="https://sistemacentros.org/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://sistemacentros.org/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="https://sistemacentros.org/css/animate.css" rel="stylesheet">
+    <link href="https://sistemacentros.org/css/style.css" rel="stylesheet">
+    <link href="https://sistemacentros.org/css/sicenet/modal.css" rel="stylesheet">
+    <link href="https://sistemacentros.org/css/sicenet/estilos_extra.css" rel="stylesheet">
+    <link href="https://sistemacentros.org/css/sicenet/style-responsive.css" rel="stylesheet">
+    <link href="https://sistemacentros.org/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <link href="https://sistemacentros.org/css/plugins/toastr/toastr.min.css" rel="stylesheet">
+    <link href="https://sistemacentros.org/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?hl=es" async defer></script>
+</head>
+<style>
+    .estilos{
+        background-image: url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"%23009E55\" stroke=\"%23009E55\" stroke-width=\"1\"><path d=\"M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z\"/></svg>');
+    }
+</style>
+
+
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content">
+        <div class="loginColumns-register animated fadeInDown">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="https://sistemacentros.org/store/image/logos/logocurso.png" alt="logo curso">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                </div>
+            </div>
+
+            <form role="form" name="frm-step1"  method="GET" action="verificacion-exitosa.html">
+                <input type="hidden" name="_token" value="RHt4NsGWobdyhzt1vJog8hTYucuNYO3cTjy0UZFC">
+                <div class="row">
+                    <div class="col-md-6"></div>
+                    <div class="col-md-6">
+                        <div class="ibox-content align-middle">
+                            <div class="m-t">
+                                <div class="form-group">
+                                    <label><strong>Folio digital:</strong></label>
+                                    <input type="text" class="form-control" placeholder="xxxxxxxx-xxxx-xxx-xxxx-xxxxxxxxxxx" name="guid" value="" autofocus>
+                                </div>
+                                <!-- CAPTCHA simulado con palomita SVG -->
+                                <div style="width: 304px; padding: 10px; border: 1px solid #d3d3d3; border-radius: 4px; background-color: #f9f9f9; position: relative;">
+                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                        <div class="estilos" style="width: 28px; height: 28px;  background-repeat: no-repeat; background-position: center; background-size: 24px; border-radius: 2px; border: 1px solid #d3d3d3;"></div>
+                                        <span style="font-family: Roboto, sans-serif; font-size: 14px; color: #000;">No soy un robot</span>
+                                        <img src="logo2.png" alt="reCAPTCHA Logo" style="height: 54px;
+                                        position: relative;
+                                        left: 51px;">
+                 
+                                    </div>
+                                    
+                                </div>
+                                <div style="margin-top: 8px; text-align: center;">
+                                                   </div>
+                                <div style="margin-top: 6px; font-size: 10px; font-family: Roboto, sans-serif; color: #555; text-align: center;">
+                                   
+                                </div>
+                                <br>
+                                <button type="submit" id="btnValidar" class="btn btn-primary block full-width m-b">BUSCAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <hr />
+            <div class="row">
+                <div class="col-md-6">
+                    Sistema Centros de Capacitación y Calidad
+                </div>
+                <div class="col-md-6 text-right">
+                    <small>© 2021</small>
+                </div>
+            </div>
+        </div>
+        <div id="modal"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://sistemacentros.org/js/jquery-3.1.1.min.js"></script>
+    <script src="https://sistemacentros.org/js/popper.min.js"></script>
+    <script src="https://sistemacentros.org/js/bootstrap.js"></script>
+    <script src="https://sistemacentros.org/js/plugins/vuejs/vue.js"></script>
+    <script src="https://sistemacentros.org/js/plugins/vuejs/axios.js"></script>
+    <script src="https://sistemacentros.org/js/plugins/pace/pace.min.js"></script>
+    <script src="https://sistemacentros.org/js/function.sicenet.js"></script>
+    <script src="https://sistemacentros.org/js/plugins/validate/jquery.validate.min.js"></script>
+    <script src="https://sistemacentros.org/js/plugins/validate/additional-methods.min.js"></script>
+    <script src="https://sistemacentros.org/js/plugins/validate/messages_es.js"></script>
+    <script src="https://sistemacentros.org/js/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="https://sistemacentros.org/js/plugins/toastr/toastr.min.js"></script>
+    <script src="https://sistemacentros.org/js/verificacion/index.js"></script>
+</body>
+
+</html>
